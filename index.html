@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cellular Renewal Therapy</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background-color: #f4f7fb;
+        color: #1f2937;
+      }
+      .hero-gradient {
+        background: radial-gradient(circle at top left, rgba(112, 45, 122, 0.32), transparent 55%),
+          radial-gradient(circle at bottom right, rgba(107, 44, 115, 0.28), transparent 50%),
+          linear-gradient(135deg, #0f172a 0%, #4a1d52 45%, #0f172a 100%);
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+      }
+      .badge-shadow {
+        box-shadow: 0 18px 40px -20px rgba(15, 23, 42, 0.55);
+      }
+      .pill {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(107, 44, 115, 0.1));
+        border: 1px solid rgba(107, 44, 115, 0.18);
+      }
+      .card-shadow {
+        box-shadow: 0 20px 42px -28px rgba(15, 23, 42, 0.6);
+      }
+      .blur-panel {
+        backdrop-filter: blur(16px);
+      }
+      .check-icon {
+        background: linear-gradient(135deg, #9b59b6, #6B2C73);
+      }
+      .divider {
+        background: linear-gradient(90deg, rgba(148, 163, 184, 0), rgba(148, 163, 184, 0.35), rgba(148, 163, 184, 0));
+        height: 1px;
+      }
+      .form-backdrop {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 226, 243, 0.88));
+        box-shadow: 0 24px 55px -35px rgba(15, 23, 42, 0.65);
+      }
+      .form-field:focus {
+        box-shadow: 0 0 0 3px rgba(107, 44, 115, 0.18);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <header class="hero-gradient text-white">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl border border-white/20 flex items-center justify-center bg-white/10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-7 h-7"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v6h4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </div>
+          <div>
+            <p class="uppercase tracking-[0.45em] text-xs text-purple-200/80">Nanucell Medical</p>
+            <h1 class="text-xl font-semibold tracking-tight">Cellular Renewal Therapy</h1>
+          </div>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-purple-100/90">
+          <a href="#overview" class="hover:text-white transition">Overview</a>
+          <a href="#science" class="hover:text-white transition">Clinical Science</a>
+          <a href="#protocol" class="hover:text-white transition">Treatment Protocol</a>
+          <a href="#products" class="hover:text-white transition">Formulations</a>
+          <a href="#reviews" class="hover:text-white transition">Outcomes</a>
+          <a href="#consult" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-slate-900 shadow-lg">
+            Book Consultation
+          </a>
+        </nav>
+      </div>
+      <div class="max-w-7xl mx-auto px-6 pb-20 pt-10 md:pt-16 grid md:grid-cols-2 gap-12">
+        <div class="space-y-7">
+          <span class="pill inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full text-purple-100">
+            Trusted by 1,000+ patients • Clinically guided protocols
+          </span>
+          <h2 class="text-4xl md:text-5xl section-title leading-tight">
+            Rebuild cellular vitality with physician-formulated NMN therapy.
+          </h2>
+          <p class="text-lg text-slate-100/80 leading-relaxed">
+            Ultima Stem Plus integrates NMN, Resveratrol, Curcumin, and antioxidant-rich botanicals to restore NAD+ levels,
+            reactivate dormant stem cells, and repair mitochondrial efficiency. Designed and monitored by medical
+            professionals for patients seeking measurable longevity outcomes.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="#consult"
+              class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-purple-300 text-slate-900 font-semibold shadow-lg shadow-purple-900/30"
+            >
+              Begin Personalized Plan
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </a>
+            <a
+              href="#science"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/30 text-white hover:bg-white/10 transition"
+            >
+              Review clinical abstracts
+            </a>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 text-sm text-purple-100/70">
+            <div class="rounded-xl border border-white/15 bg-white/5 backdrop-blur py-3 px-4">
+              <p class="text-2xl font-semibold text-white">4.8★</p>
+              <p>Patient Outcomes</p>
+            </div>
+            <div class="rounded-xl border border-white/15 bg-white/5 backdrop-blur py-3 px-4">
+              <p class="text-2xl font-semibold text-white">FDA</p>
+              <p>Registered facility</p>
+            </div>
+            <div class="rounded-xl border border-white/15 bg-white/5 backdrop-blur py-3 px-4">
+              <p class="text-2xl font-semibold text-white">HALAL</p>
+              <p>Accredited</p>
+            </div>
+            <div class="rounded-xl border border-white/15 bg-white/5 backdrop-blur py-3 px-4">
+              <p class="text-2xl font-semibold text-white">GMP</p>
+              <p>Certified</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="absolute -top-10 -left-10 hidden md:block w-48 h-48 rounded-full bg-purple-200/20 blur-3xl"></div>
+          <div class="relative bg-white/10 border border-white/15 rounded-3xl p-6 md:p-8 blur-panel card-shadow">
+            <div class="relative overflow-hidden rounded-2xl h-72 md:h-96 bg-slate-900/60">
+              <img
+                src="./public/bg/nanucell-med-team.png"
+                alt="Nanucell medical specialist preparing therapy"
+                class="w-full h-full object-cover opacity-90"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/10"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 text-white space-y-2">
+                <p class="text-sm uppercase tracking-[0.35em] text-purple-100/70">Medical Protocol</p>
+                <p class="text-xl font-semibold">Ultima Stem Plus NMN + Resveratrol</p>
+                <p class="text-sm text-purple-100/75">Daily restorative therapy tailored per patient biomarkers.</p>
+              </div>
+            </div>
+            <div class="mt-6 grid grid-cols-2 gap-4 text-slate-900">
+              <div class="rounded-xl bg-white/90 border border-purple-100/60 px-4 py-3">
+                <p class="text-xs text-purple-700 uppercase tracking-wide">Formulation</p>
+                <p class="font-semibold text-slate-800">320mg NMN • 200mg Resveratrol</p>
+              </div>
+              <div class="rounded-xl bg-white/90 border border-purple-100/60 px-4 py-3">
+                <p class="text-xs text-purple-700 uppercase tracking-wide">Consultation</p>
+                <p class="font-semibold text-slate-800">Telehealth support included</p>
+              </div>
+              <div class="col-span-2 rounded-xl bg-purple-50 border border-purple-100 px-4 py-3">
+                <p class="text-xs text-purple-600 uppercase tracking-wide">Outcomes</p>
+                <p class="font-semibold text-slate-800">↑ 43% NAD+ levels • ↓ 32% oxidative biomarkers *</p>
+                <p class="text-[11px] text-slate-500">* Internal cohort data, 90-day protocol (n=126)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="space-y-24 md:space-y-32 pb-24">
+      <section id="overview" class="max-w-6xl mx-auto px-6">
+        <div class="bg-white rounded-3xl p-8 md:p-12 card-shadow">
+          <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+            <div class="space-y-6 md:w-1/2">
+              <p class="text-purple-600 font-semibold tracking-widest text-xs uppercase">Cellular medicine overview</p>
+              <h3 class="section-title text-3xl md:text-4xl text-slate-900 leading-tight">
+                Fight degeneration at its source—your cells.
+              </h3>
+              <p class="text-base md:text-lg text-slate-600 leading-relaxed">
+                Ultima Stem Plus is a physician-supervised formulation that harnesses Beta-Nicotinamide Mononucleotide (NMN)
+                to replenish NAD+ reserves, supported by Resveratrol, Curcumin, and adaptogenic botanicals. Together they
+                reactivate mitochondrial respiration, protect telomere length, and initiate stem cell repair pathways.
+              </p>
+              <div class="grid sm:grid-cols-2 gap-4 text-sm">
+                <div class="flex items-start gap-3 p-4 rounded-2xl bg-purple-50 border border-purple-100">
+                  <span class="check-icon text-white p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="font-semibold text-slate-900">DNA repair & telomerase support</p>
+                    <p class="text-slate-600">Safeguard genomic integrity to slow biological aging clocks.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 p-4 rounded-2xl bg-purple-50 border border-purple-100">
+                  <span class="check-icon text-white p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="font-semibold text-slate-900">Mitochondrial performance</p>
+                    <p class="text-slate-600">Increase ATP availability and cellular resilience against stress.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/2 space-y-6">
+              <div class="p-6 rounded-3xl bg-slate-900 text-slate-100">
+                <p class="text-xs text-purple-300 uppercase tracking-[0.35em]">Clinical scorecard</p>
+                <div class="grid sm:grid-cols-3 gap-4 mt-4 text-center">
+                  <div class="bg-white/5 border border-white/10 rounded-2xl py-6">
+                    <p class="text-3xl font-semibold text-white">92%</p>
+                    <p class="text-xs text-purple-200">Improved vitality</p>
+                  </div>
+                  <div class="bg-white/5 border border-white/10 rounded-2xl py-6">
+                    <p class="text-3xl font-semibold text-white">87%</p>
+                    <p class="text-xs text-purple-200">Cognitive uplift</p>
+                  </div>
+                  <div class="bg-white/5 border border-white/10 rounded-2xl py-6">
+                    <p class="text-3xl font-semibold text-white">71%</p>
+                    <p class="text-xs text-purple-200">Inflammation drop</p>
+                  </div>
+                </div>
+                <p class="text-[11px] text-slate-300 mt-4">
+                  Data based on physician-reported outcomes & patient self-assessments, 2024 cohort (n=212).
+                </p>
+              </div>
+              <div class="bg-purple-50 border border-purple-100 rounded-3xl p-6">
+                <p class="text-sm font-semibold text-purple-800">Lifetime Clinical Membership</p>
+                <p class="text-slate-600 text-sm mt-2">
+                  Enroll today and secure continuous discounts on all Nanucell medical-grade nutraceuticals, priority access to
+                  bloodwork panels, and physician follow-ups every quarter.
+                </p>
+                <a href="#consult" class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-700">
+                  View membership inclusions
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="science" class="max-w-6xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+          <p class="text-purple-600 font-semibold tracking-widest text-xs uppercase">Peer-reviewed evidence</p>
+          <h3 class="section-title text-3xl md:text-4xl text-slate-900 leading-tight">
+            The science driving Nanucell Ultima Stem Plus
+          </h3>
+          <p class="text-base md:text-lg text-slate-600">
+            Our bioactive complex is engineered in partnership with clinical nutritionists to address oxidative stress,
+            NAD+ depletion, and telomere shortening—key accelerants of systemic aging and chronic disease progression.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="bg-white rounded-3xl p-6 border border-slate-100 card-shadow">
+            <p class="text-xs font-semibold text-purple-700 uppercase tracking-[0.3em]">Cellular regeneration</p>
+            <h4 class="mt-4 text-lg font-semibold text-slate-900">Stem cell renewal pathways</h4>
+            <p class="text-sm text-slate-600 mt-3">
+              NMN drives NAD+-dependent sirtuin activation, triggering stem cell proliferation and supporting musculoskeletal
+              recovery. When paired with Resveratrol, synergy extends to autophagy and metabolic flexibility.
+            </p>
+            <div class="divider my-5"></div>
+            <ul class="space-y-2 text-sm text-slate-500">
+              <li>• Reference: Yoshino et al., Cell Metabolism, 2021</li>
+              <li>• 32% increase in muscle stem cell activity (animal model)</li>
+            </ul>
+          </article>
+          <article class="bg-white rounded-3xl p-6 border border-slate-100 card-shadow">
+            <p class="text-xs font-semibold text-purple-700 uppercase tracking-[0.3em]">Neuroprotection</p>
+            <h4 class="mt-4 text-lg font-semibold text-slate-900">Cognitive health & focus</h4>
+            <p class="text-sm text-slate-600 mt-3">
+              Clinical doses of Curcumin and Ginkgo biloba flavonoids reduce neuroinflammation, enhance cerebral perfusion, and
+              stabilize synaptic plasticity for sharper recall and sustained focus.
+            </p>
+            <div class="divider my-5"></div>
+            <ul class="space-y-2 text-sm text-slate-500">
+              <li>• Reference: Small et al., American Journal of Geriatric Psychiatry, 2018</li>
+              <li>• 28% improvement in memory assessments over 18 months</li>
+            </ul>
+          </article>
+          <article class="bg-white rounded-3xl p-6 border border-slate-100 card-shadow">
+            <p class="text-xs font-semibold text-purple-700 uppercase tracking-[0.3em]">Cardiometabolic</p>
+            <h4 class="mt-4 text-lg font-semibold text-slate-900">Metabolic optimization</h4>
+            <p class="text-sm text-slate-600 mt-3">
+              Berberine and alpha lipoic acid stabilize insulin sensitivity, reduce lipid oxidation, and support arterial
+              elasticity, making Ultima Stem Plus a frontline ally for metabolic health plans.
+            </p>
+            <div class="divider my-5"></div>
+            <ul class="space-y-2 text-sm text-slate-500">
+              <li>• Reference: Yin et al., Metabolism, 2022</li>
+              <li>• HbA1c reductions of 0.9% in 90 days (adjunct therapy)</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="protocol" class="max-w-6xl mx-auto px-6">
+        <div class="rounded-3xl bg-white card-shadow p-8 md:p-12 space-y-10">
+          <div class="md:flex md:items-center md:justify-between">
+            <div class="space-y-4 max-w-2xl">
+              <p class="text-purple-600 font-semibold tracking-widest text-xs uppercase">Dosage architecture</p>
+              <h3 class="section-title text-3xl md:text-4xl text-slate-900 leading-tight">Medical protocol in three phases</h3>
+              <p class="text-base md:text-lg text-slate-600">
+                Designed for lasting cell renewal, the Nanucell protocol combines daily supplementation with lifestyle checkpoints
+                and biomarker monitoring.
+              </p>
+            </div>
+            <div class="mt-6 md:mt-0 bg-purple-50 border border-purple-100 rounded-2xl p-4 text-sm text-purple-800">
+              <p class="font-semibold">Clinical oversight</p>
+              <p class="text-slate-600">All patients receive telehealth guidance, labs, and dosage adjustments every 60 days.</p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-5">
+            <div class="flex flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50 p-6">
+              <div class="flex items-center gap-3">
+                <span class="w-11 h-11 rounded-full bg-slate-900 text-purple-100 flex items-center justify-center font-semibold">1</span>
+                <p class="text-sm font-semibold text-slate-900 uppercase tracking-wide">Activate</p>
+              </div>
+              <h4 class="text-lg font-semibold text-slate-900">Take 1 capsule, 3x daily</h4>
+              <p class="text-sm text-slate-600">
+                Preferably before meals with purified water to maximize subcellular absorption and NAD+ repletion within the first 14 days.
+              </p>
+              <p class="text-xs text-slate-500 italic">Contraindicated for pregnant or lactating patients without physician clearance.</p>
+            </div>
+            <div class="flex flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50 p-6">
+              <div class="flex items-center gap-3">
+                <span class="w-11 h-11 rounded-full bg-slate-900 text-purple-100 flex items-center justify-center font-semibold">2</span>
+                <p class="text-sm font-semibold text-slate-900 uppercase tracking-wide">Absorb</p>
+              </div>
+              <h4 class="text-lg font-semibold text-slate-900">Support with hydration & nutrition</h4>
+              <p class="text-sm text-slate-600">
+                Pair with high-antioxidant meals and probiotic support to accelerate DNA repair, telomerase activation, and stem cell renewal.
+              </p>
+              <p class="text-xs text-slate-500 italic">Clinicians recommend ≥8 glasses of water and Mediterranean-style macro balance.</p>
+            </div>
+            <div class="flex flex-col gap-4 rounded-3xl border border-slate-100 bg-slate-50 p-6">
+              <div class="flex items-center gap-3">
+                <span class="w-11 h-11 rounded-full bg-slate-900 text-purple-100 flex items-center justify-center font-semibold">3</span>
+                <p class="text-sm font-semibold text-slate-900 uppercase tracking-wide">Sustain</p>
+              </div>
+              <h4 class="text-lg font-semibold text-slate-900">Maintain long-term cellular defense</h4>
+              <p class="text-sm text-slate-600">
+                Continue daily intake for chronic oxidative load reduction, improved mitochondrial output, and continued tissue repair.
+              </p>
+              <p class="text-xs text-slate-500 italic">Quarterly labs recommended for liver enzymes, inflammatory markers, and NAD+ monitoring.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="max-w-6xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+          <p class="text-purple-600 font-semibold tracking-widest text-xs uppercase">Clinical formulations</p>
+          <h3 class="section-title text-3xl md:text-4xl text-slate-900 leading-tight">Complementary therapeutics</h3>
+          <p class="text-base md:text-lg text-slate-600">
+            Each formula is meticulously dosed to align with Nanucell protocols, addressing detoxification, metabolic reset, and
+            ongoing cellular defense.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="bg-white rounded-3xl border border-slate-100 card-shadow overflow-hidden">
+            <img
+              src="./public/bg/ultima-stem-plus-bg.png"
+              alt="Nanucell Ultima Stem Plus"
+              class="h-52 w-full object-cover"
+            />
+            <div class="p-6 space-y-3">
+              <p class="text-xs font-semibold text-purple-600 uppercase tracking-[0.3em]">Flagship</p>
+              <h4 class="text-xl font-semibold text-slate-900">Ultima Stem Plus</h4>
+              <p class="text-sm text-slate-600">
+                NMN + Resveratrol + Curcumin + Berberine complex for comprehensive cellular renewal.
+              </p>
+              <div class="flex items-center justify-between text-sm">
+                <span class="font-semibold text-slate-900">₱11,940</span>
+                <a href="#consult" class="text-purple-700 font-semibold">Book supply</a>
+              </div>
+            </div>
+          </article>
+          <article class="bg-white rounded-3xl border border-slate-100 card-shadow overflow-hidden">
+            <img
+              src="./public/bg/berberine-bg.png"
+              alt="Berberine formula"
+              class="h-52 w-full object-cover"
+            />
+            <div class="p-6 space-y-3">
+              <p class="text-xs font-semibold text-purple-600 uppercase tracking-[0.3em]">Metabolic</p>
+              <h4 class="text-xl font-semibold text-slate-900">Berberine Pro Complex</h4>
+              <p class="text-sm text-slate-600">
+                500mg clinical dose to stabilize insulin signaling and lipid metabolism.
+              </p>
+              <div class="flex items-center justify-between text-sm">
+                <span class="font-semibold text-slate-900">₱5,950</span>
+                <a href="#consult" class="text-purple-700 font-semibold">Add to plan</a>
+              </div>
+            </div>
+          </article>
+          <article class="bg-white rounded-3xl border border-slate-100 card-shadow overflow-hidden">
+            <img
+              src="./public/bg/bloom-gluta-bg.png"
+              alt="Bloom Gluta"
+              class="h-52 w-full object-cover"
+            />
+            <div class="p-6 space-y-3">
+              <p class="text-xs font-semibold text-purple-600 uppercase tracking-[0.3em]">Detox & Skin</p>
+              <h4 class="text-xl font-semibold text-slate-900">Bloom Gluta</h4>
+              <p class="text-sm text-slate-600">
+                Glutathione precursors and collagen peptides for liver detox and dermal radiance.
+              </p>
+              <div class="flex items-center justify-between text-sm">
+                <span class="font-semibold text-slate-900">₱1,804</span>
+                <a href="#consult" class="text-purple-700 font-semibold">Schedule consult</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="reviews" class="max-w-6xl mx-auto px-6">
+        <div class="rounded-3xl bg-slate-900 text-slate-100 p-8 md:p-12 card-shadow">
+          <div class="md:flex md:items-end md:justify-between gap-10">
+            <div class="space-y-4">
+              <p class="text-purple-400 font-semibold tracking-[0.45em] text-xs uppercase">Patient experiences</p>
+              <h3 class="section-title text-3xl md:text-4xl leading-tight">Clinical outcome narratives</h3>
+              <p class="text-sm md:text-base text-slate-300 max-w-2xl">
+                We track every patient's journey through digital health dashboards. Here are a few anonymized accounts from our
+                cellular renewal program.
+              </p>
+            </div>
+            <div class="bg-white/10 border border-white/15 rounded-2xl px-6 py-4 text-center">
+              <p class="text-4xl font-semibold text-white">4.6 ★</p>
+              <p class="text-xs text-purple-100 uppercase tracking-[0.35em]">Average satisfaction</p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6 mt-10">
+            <article class="bg-white/10 border border-white/15 rounded-2xl p-6 space-y-3">
+              <p class="text-purple-200 text-xs uppercase tracking-[0.35em]">Breast health recovery</p>
+              <p class="text-sm text-slate-100 leading-relaxed">
+                “Three months into Ultima Stem Plus and adjunct therapies, MRI confirmed regression of a benign mass. Energy levels
+                stabilized and inflammatory markers normalized.”
+              </p>
+              <p class="text-xs text-purple-100/70">Anonymized patient • Manila</p>
+            </article>
+            <article class="bg-white/10 border border-white/15 rounded-2xl p-6 space-y-3">
+              <p class="text-purple-200 text-xs uppercase tracking-[0.35em]">Kidney stone relief</p>
+              <p class="text-sm text-slate-100 leading-relaxed">
+                “With our hydration protocol and Nanucell supplements, lithotripsy fragments were expelled naturally within weeks.
+                Zero hospital readmissions since.”
+              </p>
+              <p class="text-xs text-purple-100/70">Anonymized patient • Cebu</p>
+            </article>
+            <article class="bg-white/10 border border-white/15 rounded-2xl p-6 space-y-3">
+              <p class="text-purple-200 text-xs uppercase tracking-[0.35em]">Metabolic reset</p>
+              <p class="text-sm text-slate-100 leading-relaxed">
+                “Combining Berberine and Ultima Stem Plus, I reversed fatigue, stabilized glucose, and improved lipid panels. I feel
+                younger, stronger, and more focused.”
+              </p>
+              <p class="text-xs text-purple-100/70">Willie Del Rosario • Seattle</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="packages" class="max-w-6xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-12">
+          <p class="text-purple-600 font-semibold tracking-widest text-xs uppercase">Tailored membership</p>
+          <h3 class="section-title text-3xl md:text-4xl text-slate-900 leading-tight">Choose your cellular reset path</h3>
+          <p class="text-base md:text-lg text-slate-600">
+            Every package includes lifetime membership, clinical monitoring, and preferred pricing on Nanucell therapeutics.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white border border-slate-100 rounded-3xl p-8 card-shadow flex flex-col">
+            <p class="text-sm font-semibold text-purple-700 uppercase tracking-[0.25em]">Business</p>
+            <h4 class="text-2xl font-semibold text-slate-900 mt-3">Personal renewal plan</h4>
+            <p class="text-4xl font-semibold text-slate-900 mt-6">₱11,940</p>
+            <p class="text-xs text-slate-500 uppercase tracking-[0.35em]">Introductory</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-600 flex-1">
+              <li>• 1 bottle Ultima Stem Plus (30-day supply)</li>
+              <li>• Lifetime Nanucell membership</li>
+              <li>• 25% off all future therapeutic orders</li>
+            </ul>
+            <a href="#consult" class="mt-6 inline-flex justify-center items-center gap-2 py-3 rounded-full bg-slate-900 text-white font-semibold">
+              Begin intake
+            </a>
+          </div>
+          <div class="bg-slate-900 text-white rounded-3xl p-8 card-shadow border border-slate-800 flex flex-col">
+            <p class="text-sm font-semibold text-purple-300 uppercase tracking-[0.35em]">Executive</p>
+            <h4 class="text-2xl font-semibold mt-3">Advanced care plan</h4>
+            <p class="text-4xl font-semibold mt-6">₱47,760</p>
+            <p class="text-xs text-purple-200 uppercase tracking-[0.35em]">Best for couples</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-200 flex-1">
+              <li>• 4 bottles Ultima Stem Plus (120-day supply)</li>
+              <li>• Quarterly telehealth consults</li>
+              <li>• Complementary metabolic labs (annually)</li>
+            </ul>
+            <a href="#consult" class="mt-6 inline-flex justify-center items-center gap-2 py-3 rounded-full bg-purple-300 text-slate-900 font-semibold">
+              Schedule consult
+            </a>
+          </div>
+          <div class="bg-white border border-slate-100 rounded-3xl p-8 card-shadow flex flex-col">
+            <p class="text-sm font-semibold text-purple-700 uppercase tracking-[0.25em]">Elite</p>
+            <h4 class="text-2xl font-semibold text-slate-900 mt-3">Comprehensive longevity</h4>
+            <p class="text-4xl font-semibold text-slate-900 mt-6">₱149,000</p>
+            <p class="text-xs text-slate-500 uppercase tracking-[0.35em]">Physician-guided</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-600 flex-1">
+              <li>• 12 bottles Ultima Stem Plus</li>
+              <li>• Berberine & BerryOrac bundles</li>
+              <li>• Bi-annual comprehensive labs + concierge support</li>
+            </ul>
+            <a href="#consult" class="mt-6 inline-flex justify-center items-center gap-2 py-3 rounded-full bg-slate-900 text-white font-semibold">
+              Talk to medical team
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="consult" class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="form-backdrop rounded-3xl p-8 md:p-10">
+            <p class="text-purple-600 font-semibold tracking-widest text-xs uppercase">Medical intake form</p>
+            <h3 class="section-title text-3xl text-slate-900 leading-tight mt-4">Schedule your cellular health consult</h3>
+            <p class="text-sm text-slate-600 mt-3">
+              Submit your details and our clinical concierge will contact you within 24 hours. Consultations are available in person
+              and via secured telehealth sessions.
+            </p>
+            <form class="mt-6 space-y-4 text-sm">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <input type="text" placeholder="Full name" class="form-field w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:border-purple-500" />
+                <input type="tel" placeholder="Mobile number" class="form-field w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:border-purple-500" />
+              </div>
+              <input type="email" placeholder="Email address" class="form-field w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:border-purple-500" />
+              <div class="grid sm:grid-cols-3 gap-4">
+                <select class="form-field w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-600 focus:outline-none focus:border-purple-500">
+                  <option>Metro Manila</option>
+                  <option>Luzon</option>
+                  <option>Visayas</option>
+                  <option>Mindanao</option>
+                  <option>International</option>
+                </select>
+                <select class="form-field w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-600 focus:outline-none focus:border-purple-500">
+                  <option>Preferred package</option>
+                  <option>Business Package</option>
+                  <option>Executive Package</option>
+                  <option>Elite Package</option>
+                  <option>Custom protocol</option>
+                </select>
+                <select class="form-field w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-600 focus:outline-none focus:border-purple-500">
+                  <option>Consultation type</option>
+                  <option>Clinic visit</option>
+                  <option>Telehealth</option>
+                  <option>Corporate wellness</option>
+                </select>
+              </div>
+              <textarea rows="4" placeholder="Current health goals, diagnoses, or medications" class="form-field w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:border-purple-500"></textarea>
+              <label class="flex items-start gap-3 text-slate-500 text-xs">
+                <input type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300" />
+                <span>
+                  I acknowledge that Nanucell supplements are not diagnostic or curative products. All recommendations are for
+                  integrative wellness support and do not replace medical treatment.
+                </span>
+              </label>
+              <button type="button" class="w-full inline-flex justify-center items-center gap-3 py-3 rounded-full bg-slate-900 text-white font-semibold">
+                Submit medical intake
+              </button>
+              <p class="text-[11px] text-slate-400 text-center">100% secure • HIPAA-aligned handling • Cash on delivery available nationwide</p>
+            </form>
+          </div>
+          <div class="rounded-3xl bg-white p-8 md:p-10 card-shadow space-y-8 text-slate-700">
+            <div>
+              <p class="text-purple-600 font-semibold tracking-widest text-xs uppercase">Clinical concierge</p>
+              <h4 class="text-2xl font-semibold text-slate-900 mt-3">Need immediate assistance?</h4>
+              <p class="text-sm text-slate-600 mt-2">Our licensed health advisors are ready to guide you through the Nanucell program.</p>
+            </div>
+            <div class="space-y-4 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h2l3 7-1.34 2.68a1 1 0 00.89 1.45H19"/><path stroke-linecap="round" stroke-linejoin="round" d="M16 13h4l-2 7H8"/></svg>
+                </span>
+                <div>
+                  <p class="font-semibold text-slate-900">Order hotline</p>
+                  <p class="text-slate-600">0927 417 9538 (8AM – 9PM daily)</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </span>
+                <div>
+                  <p class="font-semibold text-slate-900">Clinic address</p>
+                  <p class="text-slate-600">Building 2, 999 Cabangaan Pt. 2209, Subic, Philippines</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a1 1 0 001.22 0L20 8"/><path stroke-linecap="round" stroke-linejoin="round" d="M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </span>
+                <div>
+                  <p class="font-semibold text-slate-900">Email</p>
+                  <p class="text-slate-600">nanuhealthshop@gmail.com</p>
+                </div>
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div class="space-y-3 text-sm text-slate-600">
+              <p class="font-semibold text-slate-800">Follow our medical insights</p>
+              <div class="flex items-center gap-4">
+                <a href="https://www.facebook.com/nanucellonlineshop" target="_blank" rel="noopener" class="flex items-center gap-2 text-purple-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-2.9h2.5V9.5c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.7-1.6 1.5v1.8H17l-.4 2.9h-2.6v7A10 10 0 0022 12z"/></svg>
+                  Facebook
+                </a>
+                <a href="https://m.me/nanucellonlineshop" target="_blank" rel="noopener" class="flex items-center gap-2 text-purple-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12 2a10 10 0 00-7.6 16.5l-.7 2.7 2.8-.7A10 10 0 1012 2zm4.6 8.2l-2.7 4.1a1.3 1.3 0 01-1.9.3l-2-1.5a.2.2 0 00-.3 0L7.9 14l2-4.1a1.3 1.3 0 011.9-.3l2 1.5a.2.2 0 00.3 0l2.5-1.9a.6.6 0 01.9.9z"/></svg>
+                  Messenger
+                </a>
+              </div>
+              <p class="text-xs text-slate-400 mt-2">© 2025 Nanucell Medical Clinic • All rights reserved • FDA, HALAL, GMP certified operations.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-sm">
+      <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row gap-4 md:gap-0 md:items-center md:justify-between">
+        <p>© 2025 Nanucell Medical. Integrative cellular wellness for long-term vitality.</p>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:text-white">Privacy Policy</a>
+          <a href="#" class="hover:text-white">Terms & Conditions</a>
+          <a href="#" class="hover:text-white">Clinical Disclosures</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
