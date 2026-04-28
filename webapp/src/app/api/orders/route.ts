@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { createBooking, createCODBookingFromOrder } from '@/lib/philex'
+import { convertProvince, convertRegion, removeParentheses } from '@/lib/mappings'
 
 type CartItem = {
   productId: string
@@ -62,6 +63,9 @@ export async function POST(request: NextRequest) {
         email: customerInfo.email || null,
         address: customerInfo.address,
         city: customerInfo.city,
+        barangay: customerInfo.barangay,
+        province: customerInfo.province,
+        region: customerInfo.region,
         payment_method: paymentMethod,
         payment_status: 'pending',
         order_status: 'pending',
@@ -102,19 +106,20 @@ export async function POST(request: NextRequest) {
     })
 
     // Create PhilEx booking for COD orders
+
     let philexBooking = null
     if (paymentMethod === 'cod') {
       try {
         const bookingRequest = createCODBookingFromOrder({
-          orderId: order.id,
+          orderId: order.id || '',
           orderNumber,
           customerName: customerInfo.name,
           phone: customerInfo.phone,
           address: customerInfo.address,
-          city: customerInfo.city,
-          province: customerInfo.province,
+          city: removeParentheses(customerInfo.city ?? ''),
+          province: convertProvince(customerInfo.province ?? ''),
           barangay: customerInfo.barangay,
-          region: customerInfo.region,
+          region: convertRegion(customerInfo.region ?? '').toLowerCase(),
           total,
           items: items.map(item => ({ name: item.name, quantity: item.quantity })),
           notes: customerInfo.notes,
@@ -147,9 +152,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      orderId: order.id,
+      orderId: order.id || '',
       orderNumber,
-      philexBooking,
+      // philexBooking,
       message: 'Order placed successfully',
     })
   } catch (error) {

@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useCart } from '@/context/CartContext'
+// @ts-ignore
+import { regions, provinces, cities, barangays } from 'select-philippines-address';
+import { convertProvince, removeParentheses } from '@/lib/mappings';
 
 type CustomerInfo = {
   name: string
@@ -10,6 +13,9 @@ type CustomerInfo = {
   email: string
   address: string
   city: string
+  region: string
+  barangay: string
+  province: string
   notes: string
 }
 
@@ -36,23 +42,162 @@ export default function CartModal() {
     email: '',
     address: '',
     city: '',
+    region: '',
+    barangay: '',
+    province: '',
     notes: '',
   })
 
+  // Additional functions //
+  const [regionData, setRegion] = useState<any[]>([]);
+  const [provinceData, setProvince] = useState<any[]>([]);
+  const [cityData, setCity] = useState<any[]>([]);
+  const [barangayData, setBarangay] = useState<any[]>([]);
+
+  const [regionAddr, setRegionAddr] = useState("");
+  const [provinceAddr, setProvinceAddr] = useState("");
+  const [cityAddr, setCityAddr] = useState("");
+  const [barangayAddr, setBarangayAddr] = useState("");
+
+  const [shippingFee, setShippingFee] = useState<number>(110);
+  const [loadingRate, setLoadingRate] = useState<boolean>(false);
+
+  const region = () => {
+    regions().then((response: any[]) => {
+      setRegion(response);
+
+      setRegionAddr("");
+      setProvinceAddr("");
+      setCityAddr("");
+      setBarangayAddr("");
+
+      setCustomerInfo(prev => ({
+        ...prev,
+        region: "",
+        province: "",
+        city: "",
+        barangay: "",
+      }));
+    });
+  };
+
+  const province = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const text = e.target.selectedOptions[0].text;
+
+    setRegionAddr(text);
+
+    setCustomerInfo(prev => ({
+      ...prev,
+      region: text,
+    }));
+
+    provinces(e.target.value).then((response: any[]) => {
+      setProvince(response);
+      setCity([]);
+      setBarangay([]);
+
+      setCityAddr("");
+      setBarangayAddr("");
+    });
+  };
+
+  const city = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const text = e.target.selectedOptions[0].text;
+
+    setProvinceAddr(text);
+
+    setCustomerInfo(prev => ({
+      ...prev,
+      province: text,
+    }));
+
+    cities(e.target.value).then((response: any[]) => {
+      setCity(response);
+      setBarangayAddr("");
+    });
+  };
+
+  const barangay = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const text = e.target.selectedOptions[0].text;
+
+    setCityAddr(text);
+
+    setCustomerInfo(prev => ({
+      ...prev,
+      city: text,
+    }));
+
+    barangays(e.target.value).then((response: any[]) => {
+      setBarangay(response);
+    });
+  };
+
+  const brgy = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const brgyName = e.target.selectedOptions[0].text;
+
+    setBarangayAddr(brgyName);
+
+    setCustomerInfo(prev => ({
+      ...prev,
+      barangay: brgyName,
+    }));
+
+    fetchRate({
+      province: convertProvince(provinceAddr),
+      municipality: removeParentheses(cityAddr),
+      barangay: brgyName,
+    });
+  };
+
+  useEffect(() => {
+    region()
+  }, [])
+
+  const fetchRate = async (recipient: { province: string; municipality: string; barangay: string; }) => {
+    setLoadingRate(true);
+
+    try {
+      const res = await fetch("/api/philex/rate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          cartItems,
+          recipient,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error);
+
+      setShippingFee(data.rate?.results?.fees?.total_rate);
+    } catch (err) {
+      console.error(err);
+      setShippingFee(100);
+    } finally {
+      setLoadingRate(false);
+    }
+  };
+
   const cartItems = getCartItemsWithProducts()
-  const total = getCartTotal()
+  const subtotal = getCartTotal()
+  const total = subtotal + shippingFee;
 
   const formatPrice = (price: number) => {
     return `₱${price.toLocaleString()}`
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  type InputChange =
+    | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    | { target: { name: string; value: string } };
+
+  const handleInputChange = (e: InputChange) => {
     const { name, value } = e.target
     setCustomerInfo(prev => ({ ...prev, [name]: value }))
   }
 
   const handleCheckout = async () => {
-    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address || !customerInfo.city) {
+    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address || !cityAddr) {
       alert('Please fill in all required fields')
       return
     }
@@ -126,7 +271,7 @@ export default function CartModal() {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="fixed inset-0 bg-black/50" onClick={() => setIsCartOpen(false)} />
-      
+
       <div className="relative min-h-screen flex items-center justify-center p-4">
         <div className="relative bg-white rounded-2xl shadow-xl max-w-lg w-full max-h-[90vh] overflow-hidden flex flex-col">
           {/* Header */}
@@ -246,16 +391,74 @@ export default function CartModal() {
                     placeholder="House/Unit No., Street, Barangay"
                   />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">City/Municipality *</label>
-                  <input
-                    type="text"
-                    name="city"
-                    value={customerInfo.city}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-purple-500 text-sm"
-                    placeholder="Makati City"
-                  />
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Region</label>
+                    <select
+                      name="region"
+                      onChange={province}
+                      defaultValue={""}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm">
+                      <option value="" disabled>Select Region</option>
+                      {
+                        regionData && regionData.length > 0 && regionData.map((item) => (
+                          <option
+                            key={item.region_code}
+                            value={item.region_code}>
+                            {item.region_name}
+                          </option>))
+                      }
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Province</label>
+                    <select
+                      name="province"
+                      onChange={city}
+                      disabled={!regionAddr}
+                      defaultValue={""}
+                      className="w-full px-4 py-3 border disabled:bg-slate-300 border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm">
+                      <option value="" disabled>Select Province</option>
+                      {
+                        provinceData && provinceData.length > 0 && provinceData.map((item) => (<option
+                          key={item.province_code} value={item.province_code}>{item.province_name}</option>))
+                      }
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
+                    <select
+                      name="city"
+                      onChange={barangay}
+                      disabled={!provinceAddr}
+                      defaultValue={""}
+                      className="w-full px-4 py-3 border disabled:bg-slate-300 border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm">
+                      <option value="" disabled>Select City</option>
+                      {
+                        cityData && cityData.length > 0 && cityData.map((item) => (<option
+                          key={item.city_code} value={item.city_code}>{item.city_name}</option>))
+                      }
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Barangay</label>
+                    <select
+                      name="barangay"
+                      onChange={brgy}
+                      disabled={!cityAddr}
+                      defaultValue={""}
+                      className="w-full px-4 py-3 border disabled:bg-slate-300 border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm">
+                      <option value="" disabled>Select Barangay</option>
+                      {
+                        barangayData && barangayData.length > 0 && barangayData.map((item) => (<option
+                          key={item.brgy_code} value={item.brgy_code}>{item.brgy_name}</option>))
+                      }
+                    </select>
+                  </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Order Notes</label>

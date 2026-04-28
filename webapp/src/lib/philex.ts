@@ -1,6 +1,9 @@
-const PHILEX_BASE_URL = process.env.PHILEX_API_URL || 'https://uat-philex-api.example.com'
-const PHILEX_EMAIL = process.env.PHILEX_EMAIL || ''
-const PHILEX_PASSWORD = process.env.PHILEX_PASSWORD || ''
+import { BASE_URL, P_EMAIL, P_PASSWORD } from "../../integrations/philex/Auth"
+import { convertRegion, convertProvince, removeParentheses } from "./mappings"
+
+// const PHILEX_BASE_URL = process.env.PHILEX_API_URL || 'https://uat-philex-api.example.com'
+// const PHILEX_EMAIL = process.env.PHILEX_EMAIL || ''
+// const PHILEX_PASSWORD = process.env.PHILEX_PASSWORD || ''
 
 let cachedToken: string | null = null
 let tokenExpiry: number | null = null
@@ -111,12 +114,12 @@ async function getAuthToken(): Promise<string> {
     return cachedToken
   }
 
-  const response = await fetch(`${PHILEX_BASE_URL}/authenticate`, {
+  const response = await fetch(`${BASE_URL}/authenticate`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      email: PHILEX_EMAIL,
-      password: PHILEX_PASSWORD,
+      email: P_EMAIL,
+      password: P_PASSWORD,
     }),
   })
 
@@ -148,7 +151,7 @@ async function philexRequest<T>(
 ): Promise<T> {
   const token = await getAuthToken()
 
-  const response = await fetch(`${PHILEX_BASE_URL}${endpoint}`, {
+  const response = await fetch(`${BASE_URL}${endpoint}`, {
     method,
     headers: {
       'Content-Type': 'application/json',
@@ -237,7 +240,7 @@ export async function cancelBooking(bookingId: number) {
 export async function getWaybill(trackingNumbers: string[]): Promise<ArrayBuffer> {
   const token = await getAuthToken()
 
-  const response = await fetch(`${PHILEX_BASE_URL}/generate-waybill`, {
+  const response = await fetch(`${BASE_URL}/generate-waybill`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -261,9 +264,9 @@ export const NANUCELL_PICKUP_ADDRESS: PhilexAddress = {
   lastname: 'Science',
   mobile_number: process.env.NANUCELL_PHONE || '09XXXXXXXXX',
   complete_address: process.env.NANUCELL_ADDRESS || 'Your pickup address here',
-  region: process.env.NANUCELL_REGION || 'luzon',
-  province: process.env.NANUCELL_PROVINCE || 'Metro Manila',
-  municipality: process.env.NANUCELL_MUNICIPALITY || 'Makati',
+  region: convertRegion(process.env.NANUCELL_REGION ?? '') || 'luzon',
+  province: convertProvince(process.env.NANUCELL_PROVINCE ?? '') || 'Metro Manila',
+  municipality: removeParentheses(process.env.NANUCELL_MUNICIPALITY ?? '') || 'Makati',
   barangay: process.env.NANUCELL_BARANGAY || 'Poblacion',
   pickup_time: '10:00AM',
   notes: 'Nanucell Science - Health Products',
@@ -311,9 +314,9 @@ export function createCODBookingFromOrder(
       mobile_number: orderData.phone,
       complete_address: orderData.address,
       region: orderData.region || 'luzon',
-      province: orderData.province || orderData.city,
-      municipality: orderData.city,
-      barangay: orderData.barangay || orderData.city,
+      province: orderData.province || 'Manila',
+      municipality: orderData.city || 'Caloocan City',
+      barangay: orderData.barangay || '',
       notes: orderData.notes || `Order #${orderData.orderNumber}`,
     },
   }
